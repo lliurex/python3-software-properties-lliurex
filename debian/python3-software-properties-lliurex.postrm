@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+APT=/usr/sbin/apt
+APTGET=/usr/sbin/apt-get
+APTOVERLAY=/usr/sbin/apt-overlay
+case $1 in 
+	remove|purge|abort-install|disappear)
+		dpkg-divert --package python3-software-properties-lliurex --rename --quiet --remove --divert /usr/lib/python3/dist-packages/softwareproperties/ppa.py.real /usr/lib/python3/dist-packages/softwareproperties/ppa.py
+esac
+
+#DEBHELPER#
